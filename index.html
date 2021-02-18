@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Challenge 2</title>
+</head>
+<body>
+
+
+</body>
+</html>
+
+<script>
+
+fetch('https://api.satisupp.com/pokedex')
+  .then(response => response.json())
+  .then(data => {
+    var i;
+    for (i=0; i<data.data.length; i++){
+        var ul = document.createElement("ul");
+        document.body.appendChild(ul);
+        var li = document.createElement("li"); 
+
+    var a = document.createElement("a");
+    a.innerHTML = "Pokémon name " + data.data[i].name.english+ " -";
+    var j;
+    for (j=0; j<data.data[i].type.length; j++){
+        a.innerHTML = a.innerHTML  + data.data[i].type[j] + ", ";
+    }
+
+    li.appendChild(a);
+    ul.appendChild(li);
+    }
+  });
+
+
+</script>
